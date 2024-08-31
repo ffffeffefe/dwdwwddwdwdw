@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+    <style>
+        /* Style for centering the content */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Light gray background */
+            font-family: Arial, sans-serif; /* Set a clean font */
+        }
+
+        /* Style for the button */
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover and active effects */
+        }
+
+        /* Hover and active states */
+        .button:hover {
+            transform: scale(1.05); /* Slightly enlarge the button */
+        }
+
+        .button:active {
+            transform: scale(0.95); /* Slightly shrink the button */
+        }
+
+        /* Style for the dropdown */
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        /* Style for the label */
+        .label-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .label {
+            color: black;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="label-container">
+        <div class="label">Choose the Title and Favicon:</div>
+        <select id="siteSelect">
+            <option value="googleClassroom">Google Classroom</option>
+            <option value="googleDrive">Google Drive</option>
+            <option value="desmos">Desmos</option>
+            <option value="smartpass">SmartPass</option>
+            <option value="classlink">ClassLink</option>
+        </select>
+    </div>
+    <button class="button" onclick="openGame()">Cloaker [CLICK]</button>
+
+    <script>
+        function openGame() {
+            const selectElement = document.getElementById('siteSelect');
+            const selectedValue = selectElement.value;
+
+            let title;
+            let faviconUrl;
+
+            switch (selectedValue) {
+                case 'googleClassroom':
+                    title = 'Home';
+                    faviconUrl = 'https://social-studies.static.domains/favicon/faviconold.png';
+                    break;
+                case 'googleDrive':
+                    title = 'My Drive - Google Drive';
+                    faviconUrl = 'googledrive.png'; // Random favicon for Google Drive
+                    break;
+                case 'desmos':
+                    title = 'Desmos | Graphing Calculator';
+                    faviconUrl = 'https://www.desmos.com/assets/img/apps/graphing/favicon.ico'; // Random favicon for Desmos
+                    break;
+                case 'smartpass':
+                    title = 'SmartPass';
+                    faviconUrl = 'https://cdn.prod.website-files.com/5c06a26695c70027e67b9afb/6000c70e8946530bbe101f94_SmartPass%20Icon.png'; // Random favicon for SmartPass
+                    break;
+                case 'classlink':
+                    title = 'ClassLink Login';
+                    faviconUrl = 'https://clouddrivecdn.classlink.com/favicons/3880/icon/favicon-32x32.png?1680413003726'; // Random favicon for ClassLink
+                    break;
+                default:
+                    title = 'Home';
+                    faviconUrl = 'https://social-studies.static.domains/favicon/faviconold.png';
+            }
+
+            const newWindow = window.open('about:blank', '_blank');
+            newWindow.document.title = title;
+
+            // Create and set the favicon
+            const link = newWindow.document.createElement('link');
+            link.rel = 'icon';
+            link.href = faviconUrl;
+            newWindow.document.head.appendChild(link);
+
+            // Create and add the "HOME" button
+            //const homeButton = newWindow.document.createElement('button');
+            //homeButton.textContent = 'HOME 🏠';
+          //  homeButton.style.position = 'absolute'; // Absolute positioning for correct placement
+          //  homeButton.style.top = '20px'; // Add some space from the top
+          //  homeButton.style.right = '20px'; // Add space from the right
+         //   homeButton.style.backgroundColor = '#4CAF50';
+          //  homeButton.style.color = '#fff';
+          //  homeButton.style.padding = '15px 30px';
+          //  homeButton.style.fontSize = '18px';
+           // homeButton.style.textAlign = 'center';
+          //  homeButton.style.border = 'none';
+         //   homeButton.style.borderRadius = '25px';
+         //   homeButton.style.cursor = 'pointer';
+          //  homeButton.style.zIndex = '1000'; // Ensure it stays on top
+           // newWindow.document.body.appendChild(homeButton);
+
+            // Create and add the iframe
+            const iframe = newWindow.document.createElement('iframe');
+            iframe.style.position = 'absolute'; // Absolute positioning for fullscreen effect
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%'; // Full height of the window
+            iframe.style.border = 'none';
+            iframe.src = 'https://social-studies.static.domains/index'; // Set initial source
+            newWindow.document.body.appendChild(iframe);
+
+            // Add an event listener to handle button click
+            homeButton.addEventListener('click', function() {
+                iframe.src = 'https://social-studies.static.domains/index'; // Change the iframe source to index.html
+            });
+        }
+    </script>
+
+    <script src="https://static.app/js/static.js" type="text/javascript"></script>
+</body>
+</html>
